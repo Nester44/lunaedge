@@ -7,6 +7,7 @@ import { Box } from '@mui/system'
 type ShopifyConnectedProps = {
   shopName: string;
   shopLogo: string;
+  disconnectHandler: () => void;
 }
 
 type ShopAvatarProps = {
@@ -22,8 +23,7 @@ const ShopAvatar = ({ shopLogo }: ShopAvatarProps) => {
   </Box>
 }
 
-const ShopifyConnected = ({ shopName, shopLogo }: ShopifyConnectedProps) => {
-  console.log(shopName)
+const ShopifyConnected = ({ shopName, shopLogo, disconnectHandler }: ShopifyConnectedProps) => {
   return (
     <Card
       title='Store connected'
@@ -31,6 +31,7 @@ const ShopifyConnected = ({ shopName, shopLogo }: ShopifyConnectedProps) => {
       buttonText='Continue'
       altButtonLabel='Wrong store?'
       altButtonText='Connect another one'
+      altCallback={disconnectHandler}
       centerText
       childrenOnTop={<ShopAvatar shopLogo={shopLogo} />}
       paddingX={10.5}

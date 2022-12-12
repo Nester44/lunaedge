@@ -25,6 +25,7 @@ const Progress = ({ step, handleBack, handleNext, isLastStep, isStepCompleted, i
         justifyContent: 'space-between',
         paddingBottom: 7,
         paddingTop: 25,
+        paddingX: 13,
         alignItems: 'center',
       }}
     >

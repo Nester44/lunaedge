@@ -4,6 +4,21 @@ import { Field, Form } from 'formik'
 import { TextField } from 'formik-mui'
 import Card from '../../Card'
 import List from '../../List'
+import { TextFieldProps } from 'formik-mui'
+
+const MyInput = (props: TextFieldProps) => {
+  return <TextField InputProps={{
+    sx: {
+      background: '#F8F9FC',
+      border: 'none',
+      'input': {
+        '&::placeholder': {
+          color: 'red'
+        }
+      }
+    }
+  }} {...props} />
+}
 
 const Welcome = () => {
   return (
@@ -17,9 +32,9 @@ const Welcome = () => {
     >
 
       <Box display='flex' flexDirection='column' gap={3} >
-        <Field fullWidth name='email' component={TextField} label='Email' variant='filled' />
-        <Field fullWidth name='name' component={TextField} label='Name' variant='filled' />
-        <Field fullWidth name='password' component={TextField} label='Password' variant='filled' />
+        <Field sx={{ color: 'red' }} fullWidth name='email' component={MyInput} label='Email' />
+        <Field sx={{ color: 'red' }} fullWidth name='name' component={MyInput} label='Name' />
+        <Field sx={{ color: 'red' }} fullWidth name='password' component={MyInput} label='Password' />
       </Box>
     </Card >
   )

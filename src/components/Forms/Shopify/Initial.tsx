@@ -3,7 +3,8 @@ import Card from '../../Card'
 import List from '../../List'
 
 type Props = {
-  connectHandler?: () => void;
+  connectHandler: () => void;
+  alternativeHandler: () => void;
 }
 
 const listItems = [
@@ -12,7 +13,7 @@ const listItems = [
   { title: 'Process payments', body: 'Process refunds according to your Store Policy' }
 ]
 
-const Initial = ({ connectHandler }: Props) => {
+const Initial = ({ connectHandler, alternativeHandler }: Props) => {
   return (
     <Card
       logo
@@ -21,6 +22,7 @@ const Initial = ({ connectHandler }: Props) => {
       buttonText='Connect store'
       altButtonText="I don't use Shopify"
       callback={connectHandler}
+      altCallback={alternativeHandler}
     >
       <List items={listItems} />
     </Card >

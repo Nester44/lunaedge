@@ -18,6 +18,7 @@ type Props = {
   paddingY?: number;
   paddingX?: number;
   callback?: () => void;
+  altCallback?: () => void;
 }
 
 const Logo = () => {
@@ -28,7 +29,7 @@ const Logo = () => {
 }
 
 
-const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText, altButtonLabel, logo, centerText, paddingX, paddingY, callback }: Props) => {
+const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText, altButtonLabel, logo, centerText, paddingX, paddingY, callback, altCallback }: Props) => {
   return (
     <Box
       sx={{
@@ -77,7 +78,7 @@ const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText,
           {altButtonLabel}
         </Typography>
         &nbsp;
-        <Typography variant='caption' sx={{ color: '#4BB5F3' }} >
+        <Typography onClick={altCallback} variant='caption' sx={{ color: '#4BB5F3', cursor: 'pointer' }} >
           {altButtonText}
         </Typography>
       </Box>

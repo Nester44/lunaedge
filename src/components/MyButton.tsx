@@ -14,13 +14,16 @@ const MyButton = ({ children, onClick, endIcon, startIcon, disabled }: MyButtonP
     disabled={disabled}
     disableElevation
     onClick={onClick}
-    variant='contained'
     size='small'
     endIcon={endIcon}
     startIcon={startIcon}
     sx={{
       background: '#134267',
-      color: '#93A8C1'
+      color: '#93A8C1',
+      '&.Mui-disabled': {
+        background: 'transparent',
+        color: '#93A8C1',
+      }
     }}>
     {children}
   </Button>
