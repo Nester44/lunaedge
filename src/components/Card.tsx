@@ -17,6 +17,7 @@ type Props = {
   centerText?: boolean;
   paddingY?: number;
   paddingX?: number;
+  callback?: () => void;
 }
 
 const Logo = () => {
@@ -27,7 +28,7 @@ const Logo = () => {
 }
 
 
-const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText, altButtonLabel, logo, centerText, paddingX, paddingY }: Props) => {
+const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText, altButtonLabel, logo, centerText, paddingX, paddingY, callback }: Props) => {
   return (
     <Box
       sx={{
@@ -59,12 +60,15 @@ const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText,
       <Button
         size='large'
         sx={{
-          borderRadius: 2
+          borderRadius: 2,
+          marginTop: 4,
         }}
         fullWidth
         variant='contained'
         color='primary'
         disableElevation
+        type={callback ? 'button' : 'submit'}
+        onClick={callback}
       >
         {buttonText}
       </Button>
@@ -78,7 +82,7 @@ const Card = ({ children, childrenOnTop, body, title, buttonText, altButtonText,
         </Typography>
       </Box>
 
-    </Box>
+    </Box >
   )
 }
 

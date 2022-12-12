@@ -5,7 +5,16 @@ import { Step, StepLabel, Stepper } from '@mui/material'
 import MyStepper from './MyStepper'
 import ProgressFooter from './ProgressFooter'
 
-const Progress = () => {
+type Props = {
+  step: number;
+  handleNext: () => void;
+  handleBack: () => void;
+  isLastStep: () => boolean;
+  isStepCompleted: () => boolean;
+  isFirstStep: () => boolean;
+}
+
+const Progress = ({ step, handleBack, handleNext, isLastStep, isStepCompleted, isFirstStep }: Props) => {
   return (
     <Box
       height='100%'
@@ -19,7 +28,7 @@ const Progress = () => {
         alignItems: 'center',
       }}
     >
-      <MyStepper />
+      <MyStepper isLastStep={isLastStep} step={step} handleBack={handleBack} handleNext={handleNext} isStepCompleted={isStepCompleted} isFirstStep={isFirstStep} />
       <ProgressFooter />
     </Box>
   )

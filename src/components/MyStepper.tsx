@@ -5,7 +5,14 @@ import ArrowLeft from '../assets/icon_chevron-left.png';
 import ArrowRight from '../assets/icon_chevron-right.png';
 import MyButton from './MyButton';
 
-type Props = {}
+type Props = {
+  step: number;
+  handleNext: () => void;
+  handleBack: () => void;
+  isLastStep: () => boolean;
+  isStepCompleted: () => boolean;
+  isFirstStep: () => boolean;
+}
 
 const steps = [
   'Welcome',
@@ -14,19 +21,10 @@ const steps = [
   'Done',
 ]
 
-const MyStepper = (props: Props) => {
-  const [activeStep, setActiveStep] = useState<number>(0)
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+const MyStepper = ({ step, handleBack, handleNext, isLastStep, isStepCompleted: isStepCompleted, isFirstStep }: Props) => {
   return (
     <Box>
-      <Stepper activeStep={activeStep} orientation='vertical'>
+      <Stepper activeStep={step} orientation='vertical'>
         {
           steps.map(step =>
             <Step key={step} >
@@ -41,12 +39,14 @@ const MyStepper = (props: Props) => {
 
       </Stepper>
       <Box display='flex' mt={6} justifyContent='space-between' >
-        <MyButton startIcon={<img src={ArrowLeft} />} onClick={handleBack}>
+        <MyButton disabled={isFirstStep()} startIcon={<img src={ArrowLeft} />} onClick={handleBack}>
           Prev
         </MyButton>
-        <MyButton endIcon={<img src={ArrowRight} />} onClick={handleNext}>
-          Next
-        </MyButton>
+        {
+          isLastStep() || <MyButton disabled={!isStepCompleted()} endIcon={<img src={ArrowRight} />} onClick={handleNext}>
+            Next
+          </MyButton>
+        }
       </Box>
     </Box>
   )

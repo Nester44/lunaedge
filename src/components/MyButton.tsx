@@ -6,10 +6,12 @@ type MyButtonProps = {
   onClick: () => void;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+  disabled?: boolean;
 }
 
-const MyButton = ({ children, onClick, endIcon, startIcon }: MyButtonProps) => {
+const MyButton = ({ children, onClick, endIcon, startIcon, disabled }: MyButtonProps) => {
   return <Button
+    disabled={disabled}
     disableElevation
     onClick={onClick}
     variant='contained'

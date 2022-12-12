@@ -2,7 +2,11 @@ import React from 'react'
 
 const Gmail = () => {
   return (
-    <div>Gmail</div>
+    <div
+      style={{
+        background: 'red'
+      }}
+    >Gmail</div>
   )
 }
 

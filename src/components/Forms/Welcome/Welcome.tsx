@@ -1,21 +1,26 @@
+import { Box } from '@mui/material'
+import Button from '@mui/material/Button'
+import { Field, Form } from 'formik'
+import { TextField } from 'formik-mui'
 import Card from '../../Card'
 import List from '../../List'
 
 const Welcome = () => {
-  const listItems = [
-    { title: 'Track orders and shipping', body: 'Global coverage with 600+ couriers supported' },
-    { title: 'Reply from anywhere', body: 'Respond to your customers via email or Chad chat—it’s all saved in the same thread' },
-    { title: 'Categorical inbox tags', body: 'Tags your emails by category so you know what to expect before even opening an email' }
-  ]
   return (
     <Card
       logo
-      title='Connect your Shopify store'
-      body='Installs the Chad widget in your Shopify store and sets it up to display your customers’ order information and self-serve options.'
-      buttonText='Connect store'
-      altButtonText="I don't use Shopify"
+      title='Welcome to Chad'
+      body={`Go live in 10 minutes! Chad's self-service widget empowers your customers to manage orders and track shipments—with Chad, you can offer fast support 24/7 without going crazy.`}
+      buttonText='Create account'
+      altButtonText="Login"
+      altButtonLabel='Already have an account?'
     >
-      <List items={listItems} />
+
+      <Box display='flex' flexDirection='column' gap={3} >
+        <Field fullWidth name='email' component={TextField} label='Email' variant='filled' />
+        <Field fullWidth name='name' component={TextField} label='Name' variant='filled' />
+        <Field fullWidth name='password' component={TextField} label='Password' variant='filled' />
+      </Box>
     </Card >
   )
 }

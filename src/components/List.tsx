@@ -19,18 +19,17 @@ const List = ({ items }: Props) => {
     <Box
       sx={{
         background: { xs: '#F8F9FC', md: 'initial' },
-        borderRadius: { xs: '8px', md: 0 },
-        padding: { xs: '16px', md: 0 },
-        marginBottom: '32px',
+        borderRadius: { xs: 2, md: 0 },
+        padding: { xs: 2, md: 0 },
       }}
     >
       <ul
         style={{
           listStyleImage: `url(${check})`,
-          paddingLeft: '20px',
+          paddingLeft: 20,
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: 16,
           margin: 0,
         }}
       >
